@@ -22,6 +22,7 @@ import os #https://docs.python.org/3/library/os.html
 import math_functions
 import pyttsx3 #https://pyttsx3.readthedocs.io/en/latest/engine.html to speak out problems
 
+excel_file = "C:/Users/tonya/Downloads/MentalMathResult.xlsx" # change your excel location here
 
 def menu(wb, sheet):
     
@@ -53,7 +54,7 @@ def menu(wb, sheet):
         sheet.cell(row=sheet.max_row, column=6).value = info["point"]
         sheet.cell(row=sheet.max_row, column=7).value = info["formula"]
     
-    wb.save('C:/Users/tonya/Downloads/MentalMathResult.xlsx')
+    wb.save(excel_file)
     #add in function here that shows results
     #time_stats = datetime.now() - start_time
     time_stats = time.time() - start_time
@@ -69,7 +70,7 @@ def menu(wb, sheet):
     if replay_option == "yes":
         menu(wb, sheet)
     else:
-        os.system("start EXCEL.EXE C:/Users/tonya/Downloads/MentalMathResult.xlsx")
+        os.system("start EXCEL.EXE " + excel_file)
         replay_option = pyip.inputYesNo(prompt="Press Y to exit:  ")
 
 
